@@ -47,13 +47,18 @@ credit-risk-model/
                 * financial_services & airtime dominate product categories; ChannelId_3 & ChannelId_2 dominate channels.
                 * Amount vs. Value correlation = 0.99 → drop one.
                 * Fraud flag extremely imbalanced (0.2% positive) → requires sampling strategies.
+- Task 3 (Feature Engineering): Prototyped in task-3 branch, notebook notebooks/feature-engineering.ipynb. 
+            Steps completed:
+                * RFM Aggregation: Computed Recency, Frequency, Monetary per customer and standardized them.
+                * Temporal Aggregation: Generated mean hour, day, month per customer.
+                * Categorical Counts: One-hot–encoded product, channel, pricing strategy per transaction and summed per customer.
+                * Merged Features: Combined all three into a single customer-level feature table.
+                * Visualization: Plotted distributions of RFM, temporal, and top categorical counts to verify feature behavior.
 
 ## Next Steps
-- Task 3 (Feature Engineering): Build an sklearn.pipeline.Pipeline in src/data_processing.py to generate RFM aggregates, time features, WOE-encoded categoricals, and scaling.
 
 - Task 4 (Proxy Target Engineering): Compute per-customer RFM, cluster into three segments, label the least engaged as is_high_risk.
 
 - Task 5 (Model Training & Tracking): Split data, train logistic regression & gradient boosting, tune via grid/random search, track with MLflow, write pytest tests.
 
 - Task 6 (Deployment & CI/CD): Create FastAPI /predict endpoint, containerize with Docker, and extend GitHub Actions to build, lint, test, and deploy.
-
