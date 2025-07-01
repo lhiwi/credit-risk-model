@@ -1,0 +1,16 @@
+{
+  // Use the project venv
+  "python.pythonPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.venvPath": "${workspaceFolder}/.venv",
+
+  // Allow imports from src/ without install
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+
+  // Open notebooks in project root context
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
+
+  // Linting & formatting
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--max-line-length=88", "--ignore=E302"]
+}
