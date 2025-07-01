@@ -37,3 +37,23 @@ credit-risk-model/
 - Because true loan‐performance labels are unavailable, we create a **proxy default variable** by clustering customers on Recency,  Frequency, and Monetary metrics and designating the least engaged cluster as high‐risk. This enables supervised training but introduces label risk: misclassifying credit-worthy customers leads to forgone revenue and customer dissatisfaction, while misclassifying risky customers raises exposure to unexpected defaults.
 
 - In a regulated context, model transparency often outweighs marginal gains in accuracy. A logistic‐regression scorecard built with WoE offers clear, additive feature contributions and straightforward documentation. Although gradient boosting machines can deliver superior discrimination by capturing nonlinear interactions, they necessitate post hoc explanation frameworks and more extensive validation to satisfy regulatory scrutiny. We therefore evaluate both paradigms, weighing performance gains against the imperative for transparency and governance.
+## Progress to Date
+- Task 1 (Business Understanding): Completed in main branch. See above.
+
+- Task 2 (EDA): Executed on task-2 branch. Summary on notebook notebooks/1.0-eda.ipynb:
+
+                * 95,662 transactions loaded, no missing values.
+                * Heavy right-skew in Amount/Value, long tails to $9.88 M.
+                * financial_services & airtime dominate product categories; ChannelId_3 & ChannelId_2 dominate channels.
+                * Amount vs. Value correlation = 0.99 → drop one.
+                * Fraud flag extremely imbalanced (0.2% positive) → requires sampling strategies.
+
+## Next Steps
+- Task 3 (Feature Engineering): Build an sklearn.pipeline.Pipeline in src/data_processing.py to generate RFM aggregates, time features, WOE-encoded categoricals, and scaling.
+
+- Task 4 (Proxy Target Engineering): Compute per-customer RFM, cluster into three segments, label the least engaged as is_high_risk.
+
+- Task 5 (Model Training & Tracking): Split data, train logistic regression & gradient boosting, tune via grid/random search, track with MLflow, write pytest tests.
+
+- Task 6 (Deployment & CI/CD): Create FastAPI /predict endpoint, containerize with Docker, and extend GitHub Actions to build, lint, test, and deploy.
+
