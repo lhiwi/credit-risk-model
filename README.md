@@ -6,7 +6,7 @@ Build an end-to-end credit scoring pipeline using alternative eCommerce data, fr
 
 ## Repo Structure
 
-```text
+```
 credit-risk-model/
 ├── .github/workflows/ci.yml
 ├── data/
@@ -29,6 +29,7 @@ credit-risk-model/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 ## Credit Scoring Business Understanding
 
 - The Basel II Capital Accord emphasizes not only the quantitative accuracy of credit‐risk estimates but also the qualitative rigor of model governance. Under Pillar II, banks must clearly document feature selection, data preparation, and scoring logic to satisfy regulatory audits. As a result, an interpretable model—such as logistic regression with weight‐of‐evidence encoding—facilitates transparency, auditability, and robust model‐risk management.
