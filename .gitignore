@@ -1,0 +1,23 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Data directories
+data/raw/
+data/processed/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+env/
+*.env
+
+# Build
+build/
+dist/
+
+# Logs
+*.log
