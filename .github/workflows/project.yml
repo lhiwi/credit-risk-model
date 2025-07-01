@@ -27,3 +27,8 @@ jobs:
         run: |
           pip install pytest
           pytest --maxfail=1 --disable-warnings -q
+      -  name: Check formatting with Black
+        run: |
+          pip install black
+          black --check src tests
+
