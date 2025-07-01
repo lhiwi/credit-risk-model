@@ -18,6 +18,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Check formatting with Black
+        run: |
+          pip install black
+          black --check src tests
+
       - name: Lint with flake8
         run: |
           pip install flake8
@@ -27,8 +32,3 @@ jobs:
         run: |
           pip install pytest
           pytest --maxfail=1 --disable-warnings -q
-      -  name: Check formatting with Black
-        run: |
-          pip install black
-          black --check src tests
-
