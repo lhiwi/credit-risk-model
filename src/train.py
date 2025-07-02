@@ -6,7 +6,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import roc_auc_score
-import category_encoders as ce
 
 
 def train_and_log(
