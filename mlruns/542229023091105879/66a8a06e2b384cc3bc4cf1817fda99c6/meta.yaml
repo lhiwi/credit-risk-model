@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/jilow/OneDrive/Documents/credit-risk-model/mlruns/542229023091105879/66a8a06e2b384cc3bc4cf1817fda99c6/artifacts
+deleted_time: 1751421882657
+end_time: 1751421393478
+entry_point_name: ''
+experiment_id: '542229023091105879'
+lifecycle_stage: deleted
+run_id: 66a8a06e2b384cc3bc4cf1817fda99c6
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751421393347
+status: 4
+tags: []
+user_id: lKeneni

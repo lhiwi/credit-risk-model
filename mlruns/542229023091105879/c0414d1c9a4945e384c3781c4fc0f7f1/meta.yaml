@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/jilow/OneDrive/Documents/credit-risk-model/mlruns/542229023091105879/c0414d1c9a4945e384c3781c4fc0f7f1/artifacts
+end_time: 1751421905525
+entry_point_name: ''
+experiment_id: '542229023091105879'
+lifecycle_stage: active
+run_id: c0414d1c9a4945e384c3781c4fc0f7f1
+run_name: GradientBoosting
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751421899661
+status: 3
+tags: []
+user_id: lKeneni

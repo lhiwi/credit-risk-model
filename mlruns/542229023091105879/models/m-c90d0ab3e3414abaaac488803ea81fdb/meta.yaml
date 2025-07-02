@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/jilow/OneDrive/Documents/credit-risk-model/mlruns/542229023091105879/models/m-c90d0ab3e3414abaaac488803ea81fdb/artifacts
+creation_timestamp: 1751421899913
+experiment_id: '542229023091105879'
+last_updated_timestamp: 1751421905470
+model_id: m-c90d0ab3e3414abaaac488803ea81fdb
+model_type: null
+name: GradientBoosting
+source_run_id: c0414d1c9a4945e384c3781c4fc0f7f1
+status: 2
+status_message: null

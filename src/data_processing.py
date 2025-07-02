@@ -1,4 +1,5 @@
 import argparse
+import json
 import pandas as pd
 
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -15,8 +16,9 @@ class RFMTransformer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         df = X.copy()
         df["TransactionStartTime"] = pd.to_datetime(df["TransactionStartTime"])
-        snap = self.snapshot_date or df["TransactionStartTime"].max() + pd.Timedelta(
-            days=1
+        snap = (
+            self.snapshot_date
+            or df["TransactionStartTime"].max() + pd.Timedelta(days=1)
         )
         rfm = (
             df.groupby("CustomerId")
@@ -69,7 +71,7 @@ class CategoricalAggregator(BaseEstimator, TransformerMixin):
 
 
 def build_and_run_pipeline(input_path: str, output_path: str):
-    # 1. Load raw data
+    #  Load raw data
     df = pd.read_csv(input_path, parse_dates=["TransactionStartTime"])
 
     # 2. Generate feature tables
@@ -79,29 +81,39 @@ def build_and_run_pipeline(input_path: str, output_path: str):
         ["ProductCategory", "ChannelId", "PricingStrategy"]
     ).transform(df)
 
-    # 3. Standardize RFM
+    #  Standardize RFM
     scaler = StandardScaler()
     rfm_vals = scaler.fit_transform(rfm_df[["Recency", "Frequency", "Monetary"]])
     rfm_scaled = pd.DataFrame(rfm_vals, columns=["Recency", "Frequency", "Monetary"])
     rfm_scaled["CustomerId"] = rfm_df["CustomerId"].values
 
-    # 4. Merge all
-    merged = rfm_scaled.merge(temp_df, on="CustomerId", how="left").merge(
-        cat_df, on="CustomerId", how="left"
+    #  Merge all features
+    merged = (
+        rfm_scaled.merge(temp_df, on="CustomerId", how="left")
+        .merge(cat_df, on="CustomerId", how="left")
     )
 
-    # 5. Save to CSV
+    #  Save to CSV
     merged.to_csv(output_path, index=False)
+    print(f"Wrote features to {output_path}")
+
+    #  Export feature order for API
+    feature_order = [c for c in merged.columns if c != "CustomerId"]
+    with open("src/api/feature_order.json", "w") as f:
+        json.dump(feature_order, f, indent=2)
+    print("Wrote feature order to src/api/feature_order.json")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Generate feature file from raw transactions"
+        description="Generate feature file from raw transactions and emit feature_order.json"
     )
     parser.add_argument(
         "--input", required=True, help="Path to raw CSV (data/raw/data.csv)"
     )
-    parser.add_argument("--output", required=True, help="Path to write processed CSV")
+    parser.add_argument(
+        "--output", required=True, help="Path to write processed features CSV"
+    )
     args = parser.parse_args()
 
     build_and_run_pipeline(args.input, args.output)

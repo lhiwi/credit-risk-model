@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/jilow/OneDrive/Documents/credit-risk-model/mlruns/542229023091105879/models/m-d5d79e3a364149f78b840a719f408924/artifacts
+creation_timestamp: 1751421884239
+experiment_id: '542229023091105879'
+last_updated_timestamp: 1751421899617
+model_id: m-d5d79e3a364149f78b840a719f408924
+model_type: null
+name: LogisticRegression
+source_run_id: 4e92bf58fcf74d52888fdbfe43b042b4
+status: 2
+status_message: null
