@@ -1,8 +1,6 @@
 import pandas as pd
-import tempfile
-import os
-from src.train import train_and_log
 import mlflow
+from src.train import train_and_log
 
 
 def test_train_and_log_creates_mlflow_runs(tmp_path):
