@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.cluster import KMeans
-from typing import Tuple
 
 
 def create_proxy_label(
